@@ -8,22 +8,27 @@
 }
 input#input {
 	width: 70%;
-	height: 40px;
+	height: 36px;
 	background-color: #F1F8F7;
 	text-indent: 18px;
 	font-size: 18px;
-	border-radius: 5px;
+	border-radius: 5px 20px 20px 5px;
 	margin-top: 6px;
 	border: 0px;
 }
 #topButton {
-	height: 35px;
-	width: 50px;
+	left: -40px;
+    top: 19px;
+    height: 29px;
+    width: 33px;
 	background: lightgrey;
-	border-radius: 10px;
+	border-radius: 20px;
+	position: relative;
 }
-svg:hover {
-	fill: green;
+svg {
+	position: relative;
+	top: -5px;
+    left: -5px;
 }
 body {
 	background-color: #F1F8F7;
@@ -31,11 +36,11 @@ body {
 }
 div#main {
 	width: 100px;
-	padding: 20px;
 }
 div.note {
 	display: inline-block;
-	position: absolute;
+	position: relative;
+	margin: 10px;
 	padding: 10px;
 	width: 400px;
 	min-height: 50px;
@@ -49,7 +54,7 @@ div.note {
 }
 .remove {
 	height: 40px;
-	width: 60px;
+	width: 45px;
 	background-color: lightgrey;
 	border-radius: 10px;
 	float: right;
@@ -70,6 +75,11 @@ div.note {
     position: absolute;
     opacity: 0;
     cursor: pointer;
+}
+.itemInput {
+	width: 75%;
+	height: 27px;
+	margin: 10px;
 }
 .checkmark {
     position: absolute;
