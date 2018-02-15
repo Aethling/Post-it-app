@@ -16,23 +16,35 @@ $(document).ready(function(){
 	function addPostIt(value) {
 		var $listButton = $('<button class="listButton buttons"></button>');
 		var $input = $('<input class="itemInput" type="text" placeholder="add an activity and press enter">').append($listButton);
-		var $listItem = $($listButton).on("click", function(){
-			addItemText($listButton);
+		$($listButton).on("click", function(){
+			addItem($listButton);
 		});
-		var $label = $('<label class="item"></label>').append('<input type="checkbox">', '<span class="checkmark"></span>')
-						.append($listItem);
-						console.log($listItem);
+		$($input).on("keypress", function(e){
+			if (e.which == 13){
+				addItem($listButton);
+			}
+		});
 		var $title = $('<h3 class="title"></h3>').text(value);
-		var $todo = $('<h3 class="title"></h3>',).append($title, $input, $listButton, $label,);
-		var $div = $('<div class="note"></div>').append('<button class="remove buttons"></button>', $todo);
+		var $todo = $('<h3 class="title"></h3>',).append($title, $input, $listButton,);
+		var $removeButton = $('<button class="remove buttons">delete</button>');
+		var $div = $('<div class="note"></div>').append($removeButton, $todo);
+		$($removeButton).on("click", function() {
+			removeNote($removeButton);
+		})
 		$("div#main").append($div);
 	};
-	function addItemText($listButton) {
-		var value = $($listButton).siblings("input").val();
-		var text = $($listButton).siblings("label").text(value);
-			return text;
+	function addItem($listButton) {
+		var $value = $($listButton).siblings("input").val();
+		var input = $('<input type="checkbox">')
+		var checkmark = $('<span class="checkmark"></span>')
+		var $label = $('<label class="item"></label>').text($value).append(input, checkmark);
+		var theItem = $($listButton).closest("div").append($label);
+		$($listButton).siblings("input").val('');
 	}
-
+	function removeNote($removeButton) {
+		var theNote = $($removeButton).closest("div");
+		$(theNote).remove();
+	}
 	
 	// function clickList() {
 		// var input = document.getElementsByClassName("listButton");
